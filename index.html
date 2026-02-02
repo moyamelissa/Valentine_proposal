@@ -106,15 +106,8 @@
             border: 2px solid #ddd;
         }
 
-        .no-btn {
-            position: fixed;
-            left: 60%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
         .no-btn:hover {
-            transform: translateY(-50%);
+            transform: translateX(10px);
         }
 
         .celebration {
@@ -245,6 +238,7 @@
         function moveNoButton(e) {
             e.preventDefault();
             const noBtn = document.getElementById('noBtn');
+            noBtn.style.position = 'fixed';
             const randomX = Math.random() * (window.innerWidth - 150);
             const randomY = Math.random() * (window.innerHeight - 50);
             noBtn.style.left = randomX + 'px';
@@ -255,6 +249,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const noBtn = document.getElementById('noBtn');
             noBtn.addEventListener('mouseover', function(e) {
+                noBtn.style.position = 'fixed';
                 const randomX = Math.random() * (window.innerWidth - 150);
                 const randomY = Math.random() * (window.innerHeight - 50);
                 noBtn.style.left = randomX + 'px';
