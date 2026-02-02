@@ -106,6 +106,10 @@
             border: 2px solid #ddd;
         }
 
+        .no-btn {
+            position: fixed;
+        }
+
         .no-btn:hover {
             transform: translateX(10px);
         }
@@ -205,7 +209,7 @@
         <p class="message">Hey! I think you're amazing and I'd love to spend Valentine's Day with you. So... what do you say?</p>
         <div class="buttons">
             <button class="yes-btn" onclick="celebrateYes()">Yes! 🎉</button>
-            <button class="no-btn" onclick="showSadMessage()">Nope</button>
+            <button class="no-btn" id="noBtn" onclick="moveNoButton(event)">Nope</button>
         </div>
     </div>
 
@@ -234,6 +238,26 @@
                 heartsContainer.appendChild(heart);
             }
         }
+
+        function moveNoButton(e) {
+            e.preventDefault();
+            const noBtn = document.getElementById('noBtn');
+            const randomX = Math.random() * (window.innerWidth - 150);
+            const randomY = Math.random() * (window.innerHeight - 50);
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Make button flee on mouseover too
+        document.addEventListener('DOMContentLoaded', function() {
+            const noBtn = document.getElementById('noBtn');
+            noBtn.addEventListener('mouseover', function(e) {
+                const randomX = Math.random() * (window.innerWidth - 150);
+                const randomY = Math.random() * (window.innerHeight - 50);
+                noBtn.style.left = randomX + 'px';
+                noBtn.style.top = randomY + 'px';
+            });
+        });
 
         function celebrateYes() {
             const celebration = document.getElementById('celebration');
